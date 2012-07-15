@@ -14,7 +14,7 @@
   "boss": true,
   "eqnull": true,
   "asi": true,
-  "laxcomma": true,
+  // "laxcomma": true,
   "expr": true,
   "strict": false,
   "predef": ["describe", "it", "chai"]
