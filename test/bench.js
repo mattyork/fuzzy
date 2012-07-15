@@ -1,5 +1,5 @@
-var Benchmark = Benchmark || require('benchmark')
-var suite = new Benchmark.Suite()
+var Benchmark = Benchmark || require('benchmark');
+var suite = new Benchmark.Suite();
 
 // add tests
 suite.add('RegExp#test', function() {
