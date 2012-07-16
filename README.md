@@ -28,11 +28,11 @@ Licensed under the MIT license.
 
 ## TODO
 
-- Makefile
 - Add examples directory
+- Accept a template function to wrap each character. e.g. <span>m</span>atch
 - Get benchmarks up
 - Get benchmarks running in the browser
+- Compare benchmarks of my template impl with filter2 to npm fuzzy-filter
 - Compare performance using my own position function to the regex function
-- Accept a template function to wrap each character. e.g. <span>m</span>atch
 - Optimize! Paging, maybe? Web Workers? Callbacks + async?
 - Google Closurify
