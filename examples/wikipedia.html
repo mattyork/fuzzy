@@ -8,22 +8,25 @@
 
   <script type="text/javascript">
 
-    function displayResults() {
-      // The value we're searching for
+    function displaySearchResults() {
+
+      // The user-entered value we're searching for
       var search = $('#search').val();
 
-      // Wrap each character in a <b> tag to bold
-      var template = '<b>{{char}}</b>';
+      var options = {
+          pre:  '<b>'    // Wrap each character in a <b> tag to bold
+        , post: '</b>'
 
-      // Each element in wikiLists is an object, not a string. We can pass in a
-      // function that is called on each element in the array to extract the string
-      // to fuzzy search against. In this case, element.title
-      var extract = function(element) {
-        return element.title;
+        // Each element in wikiLists is an object, not a string. We can pass an `extract`
+        // function that is called on each element in the array to extract the string
+        // to fuzzy search against. In this case, element.title
+        , extract: function(element) {
+            return element.title;
+          }
       };
 
       // Filter!
-      var filtered = fuzzy.filter(search, wikiLists, template, extract);
+      var filtered = fuzzy.filter(search, wikiLists, options);
 
       // Map the results to the html we want generated
       var results = filtered.map(function(entry){
@@ -37,12 +40,12 @@
     $(function() {
 
       // List the initial characters
-      displayResults();
+      displaySearchResults();
 
       // Filter the characters on each change of the textbox
       $('#search').on({
-          'keyup': displayResults
-        , 'webkitspeechchange': displayResults
+          'keyup': displaySearchResults
+        , 'webkitspeechchange': displaySearchResults
       });
     });
   </script>

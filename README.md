@@ -2,14 +2,14 @@
 
 Fuzzy search / fuzzy filter function for javascript a la Textmate or Sublime Text's fuzzy file search.
 
-Feel free to use now, but beware that breaking changes are imminent.
+It's usable now, but breaking changes are imminent.
 
 ## Getting Started
 Install the module with: `npm install fuzzy`
 
 ```javascript
 var list = ['baconing', 'narwhal', 'a mighty bear canoe'];
-var template = '<{{char}}>';
+var options = { pre: '<', post: '>' };
 fuzzy.filter('bcn', list, template)
 // [
 //   {string: '<b>a<c>o<n>ing',          index: 0, original: 'baconing'},
@@ -42,14 +42,9 @@ Licensed under the MIT license.
 
 ## TODO
 
-- Simplify. Remove the earlier stuff
-- Change template interface to make more sense
 - Get docco style documentation
-- Fix up directors example. Add movies, make it fast
-- Add .editorconfig
+- Fix up directors example so it looks different. Add movies, make it fast
 - Get benchmarks up
 - Get benchmarks running in the browser
-- Compare benchmarks of my template impl with filter2 to npm fuzzy-filter
 - Compare performance using my own position function to the regex function
 - Optimize! Paging, maybe? Web Workers? Async w/callbacks?
-- Google Closurify

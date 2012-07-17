@@ -29,7 +29,7 @@ describe('fuzzy', function(){
   });
   describe('.match', function(){
     it('should return the rendered string and match score', function(){
-      var results = fuzzy.match('ab', 'ZaZbZ', '<{{char}}>');
+      var results = fuzzy.match('ab', 'ZaZbZ', {pre: '<', post: '>'});
       expect(results.rendered).to.equal('Z<a>Z<b>Z');
       expect(results).to.include.keys('score');
     });
@@ -68,13 +68,24 @@ describe('fuzzy', function(){
       expect(fuzzy.filter('a', ['A'])[0].string).to.equal('A');
     });
     it('should use optional template stringing to wrap each element', function(){
-      expect(fuzzy.filter('a', ['a'], 'test{{char}}blah')[0].string).to.equal('testablah');
-      expect(fuzzy.filter('ab', ['cacbc'], '<{{char}}>')[0].string).to.eql('c<a>c<b>c');
+      var rendered = fuzzy.filter('a', ['a'], {
+          pre: "tah"
+        , post: "zah!"
+      })[0].string;
+      expect(rendered).to.equal('tahazah!');
+
+      rendered = fuzzy.filter('ab', ['cacbc'], {
+          pre: "<"
+        , post: ">"
+      })[0].string;
+      expect(rendered).to.eql('c<a>c<b>c');
     });
     it('should use optional func to get string out of array entry', function() {
       var arr = [{arg: 'hizzahpooslahp'}, {arg: 'arppg'}];
-      expect(fuzzy.filter('poop', arr, null, function(original) {
-        return original.arg;
+      expect(fuzzy.filter('poop', arr, {
+        extract: function(original) {
+          return original.arg;
+        }
       })[0].string).to.equal('hizzahpooslahp');
     });
     it('should return list untouched when given empty pattern', function(){

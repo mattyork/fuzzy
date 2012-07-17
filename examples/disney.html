@@ -64,8 +64,11 @@
 
     function listCharacters() {
       var search = $('#search').val();
-      var template = '<b>{{char}}</b>';
-      var filtered = fuzzy.filter(search, characters, template);
+      var options = {
+          pre: "<b>"
+        , post: "</b>"
+      }
+      var filtered = fuzzy.filter(search, characters, options);
 
       // process the results to extract the strings
       var newCharacters = filtered.map(function(el) {
@@ -76,7 +79,6 @@
     }
 
     $(function() {
-
       // List the initial characters
       listCharacters();
 
