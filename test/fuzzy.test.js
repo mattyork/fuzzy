@@ -23,40 +23,45 @@ describe('fuzzy', function(){
       expect(fuzzy.positions('abc', 'azzbdscpw')).to.eql([0, 3, 6]);
     });
   });
-  describe('.filter', function(){
-    it('should filter the elements of a string array', function(){
-      expect(fuzzy.filter('a', ['a'])).to.eql(['a']);
-      expect(fuzzy.filter('ab', ['aba', 'c', 'cacb'])).to.eql(['aba', 'cacb']);
+  describe('.simpleFilter', function(){
+    it('should filter the elements of a stringing array', function(){
+      expect(fuzzy.simpleFilter('a', ['a'])).to.eql(['a']);
+      expect(fuzzy.simpleFilter('ab', ['aba', 'c', 'cacb'])).to.eql(['aba', 'cacb']);
     });
-    it('should use optional func to get str out of array entry', function() {
+    it('should use optional func to get string out of array entry', function() {
         var arr = [{arg: 'hizzahpooslahp'}, {arg: 'arppg'}];
-        expect(fuzzy.filter('poop', arr, function(el) {
-          return el.arg;
+        expect(fuzzy.simpleFilter('poop', arr, function(original) {
+          return original.arg;
         })).to.eql([{arg: 'hizzahpooslahp'}]);
     });
   });
-  describe('.filter2', function(){
+  describe('.filter', function(){
     it('should return the index and matching array elements', function(){
-      expect(fuzzy.filter2('a', ['a'])).to.eql([{str: 'a', idx: 0}]);
-      expect(fuzzy.filter2('ab', ['aba', 'c', 'cacb'])).to.eql([
-        {str: 'aba' , idx: 0},
-        {str: 'cacb', idx: 2}
+      expect(fuzzy.filter('a', ['a'])).to.eql([{string: 'a', index: 0, original: 'a'}]);
+      expect(fuzzy.filter('ab', ['aba', 'c', 'cacb'])).to.eql([
+        {string: 'aba' , index: 0, original: 'aba'},
+        {string: 'cacb', index: 2, original: 'cacb'}
       ]);
     });
-    // TODO: refactor test to be after template test
-    it('should use optional func to get str out of array entry', function() {
+    it('should be case insensitive', function(){
+      expect(fuzzy.filter('a', ['A'])).to.eql([{string: 'A', index: 0, original: 'A'}]);
+    });
+    it('should use optional template stringing to wrap each element', function(){
+      expect(fuzzy.filter('a', ['a'], 'test{{char}}blah')).to.eql([
+        {string: 'testablah', index: 0, original: 'a'}
+      ]);
+      expect(fuzzy.filter('ab', ['cacbc'], '<{{char}}>')).to.eql([
+        {string: 'c<a>c<b>c', index: 0, original: 'cacbc'}
+      ]);
+    });
+    it('should use optional func to get string out of array entry', function() {
       var arr = [{arg: 'hizzahpooslahp'}, {arg: 'arppg'}];
-      expect(fuzzy.filter2('poop', arr, null, function(el) {
-        return el.arg;
-      })).to.eql([{str: 'hizzahpooslahp', idx: 0}]);
-    });
-    it('should use optional template string to wrap each element', function(){
-      expect(fuzzy.filter2('a', ['a'], 'test{{char}}blah')).to.eql([
-        {str: 'testablah', idx: 0}
-      ]);
-      expect(fuzzy.filter2('ab', ['cacbc'], '<{{char}}>')).to.eql([
-        {str: 'c<a>c<b>c', idx: 0}
-      ]);
+      expect(fuzzy.filter('poop', arr, null, function(original) {
+        return original.arg;
+      })).to.eql([
+        { string: 'hizzahpooslahp'
+        , index: 0
+        , original: {arg: 'hizzahpooslahp'} }]);
     });
   });
 });

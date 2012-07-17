@@ -28,8 +28,9 @@ Licensed under the MIT license.
 
 ## TODO
 
-- Add examples directory
-- Accept a template function to wrap each character. e.g. <span>m</span>atch
+- Make fuzzy search work better. Check yeti witch
+- Comment the code
+- Get docco style documentation
 - Get benchmarks up
 - Get benchmarks running in the browser
 - Compare benchmarks of my template impl with filter2 to npm fuzzy-filter
