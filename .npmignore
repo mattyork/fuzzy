@@ -2,3 +2,4 @@
 /test
 *.sublime-project
 *.sublime-workspace
+Makefile

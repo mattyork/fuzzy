@@ -40,9 +40,10 @@ Licensed under the MIT license.
 ## TODO
 
 - Simplify. Remove the earlier stuff
-- Change template to make more sense
+- Change template interface to make more sense
 - Get docco style documentation
 - Fix up directors example. Add movies, make it fast
+- Add .editorconfig
 - Get benchmarks up
 - Get benchmarks running in the browser
 - Compare benchmarks of my template impl with filter2 to npm fuzzy-filter

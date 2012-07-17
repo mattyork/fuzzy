@@ -1,6 +1,6 @@
 all: fuzzy.js
 
-fuzzy.js: lint test
+fuzzy.js: lint test build
 
 lint:
 	@jshint lib test examples \
@@ -9,4 +9,10 @@ lint:
 test:
 	@mocha
 
-.PHONY: all fuzzy.js lint test
+build:
+	@./node_modules/uglify-js/bin/uglifyjs lib/fuzzy.js >fuzzy-min.js
+
+clean:
+	rm fuzzy-min.js
+
+.PHONY: all fuzzy.js lint test build
