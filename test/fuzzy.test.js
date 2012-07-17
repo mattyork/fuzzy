@@ -15,15 +15,6 @@ describe('fuzzy', function(){
       expect(fuzzy.test('okmgk', 'osh kosh modkhigow')).to.be.False;
     });
   });
-  describe('.positions', function(){
-    it('should return null when no fuzzy match', function(){
-      expect(fuzzy.positions('abc', 'zazzb')).to.not.exist;
-      expect(fuzzy.positions('', 'dosifsd')).to.not.exist;
-    });
-    it('should return positions when there is a fuzzy match', function(){
-      expect(fuzzy.positions('abc', 'azzbdscpw')).to.eql([0, 3, 6]);
-    });
-  });
   describe('.simpleFilter', function(){
     it('should filter the elements of a stringing array', function(){
       expect(fuzzy.simpleFilter('a', ['a'])).to.eql(['a']);
@@ -62,9 +53,13 @@ describe('fuzzy', function(){
     it('should return the index and matching array elements', function(){
       var result = fuzzy.filter('ab', ['aba', 'c', 'cacb']);
       expect(result).to.have.length(2);
+
+      // verify first result
       expect(result[0].string).to.equal('aba');
       expect(result[0].index).to.equal(0);
       expect(result[0]).to.have.property('score');
+
+      // verify second result
       expect(result[1].string).to.equal('cacb');
       expect(result[1].index).to.equal(2);
       expect(result[1]).to.have.property('score');
@@ -83,10 +78,11 @@ describe('fuzzy', function(){
       })[0].string).to.equal('hizzahpooslahp');
     });
     it('should return list untouched when given empty pattern', function(){
-      // array needs to be over size 10 - V8 has stable sort with < 10 elements,
+      // array needs to be over size 10: V8 has stable sort with < 10 elements,
       // unstable with > 10 elements
       var arr = 'abcdefghjklmnop'.split('');
-      expect(_.pluck(fuzzy.filter('', arr), 'string')).to.eql(arr);
+      var results = _.pluck(fuzzy.filter('', arr), 'string');
+      expect(results).to.eql(arr);
     });
   });
 });
