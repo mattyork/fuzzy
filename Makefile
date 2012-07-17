@@ -7,3 +7,5 @@ lint:
 
 test:
 	@mocha
+
+.PHONY: all fuzzy.js lint test
