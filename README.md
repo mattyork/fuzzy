@@ -22,7 +22,7 @@ _(Coming soon)_
 _(Coming soon)_
 
 ## Contributing
-In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using make
+Add unit tests for any new or changed functionality. Lint and test your code using Make
 
 ## Release History
 _(Nothing yet)_
@@ -34,8 +34,8 @@ Licensed under the MIT license.
 ## TODO
 
 - Add algorithms and algorithm choices. Keep file small, though
-- Comment the code
 - Get docco style documentation
+- Fix up directors example. Add movies, make it fast
 - Get benchmarks up
 - Get benchmarks running in the browser
 - Compare benchmarks of my template impl with filter2 to npm fuzzy-filter
