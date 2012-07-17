@@ -6,8 +6,13 @@ Fuzzy search function for javascript
 Install the module with: `npm install fuzzy`
 
 ```javascript
-var fuzzy = require('fuzzy');
-fuzzy.awesome(); // "awesome"
+var list = ['baconing', 'narwhal', 'a mighty bear can'];
+var template = '<{{char}}>';
+fuzzy.filter('bcn', list, template)
+// [
+//   {string: '<b>a<c>o<n>ing',          index: 0, original: 'baconing'},
+//   {string: 'a mighty <b>ear <c>a<n>', index: 2, original: 'a mighty bear can'}
+// ]
 ```
 
 ## Documentation
@@ -28,7 +33,7 @@ Licensed under the MIT license.
 
 ## TODO
 
-- Make fuzzy search work better. Check yeti witch
+- Add algorithms and algorithm choices. Keep file small, though
 - Comment the code
 - Get docco style documentation
 - Get benchmarks up

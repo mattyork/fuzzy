@@ -35,6 +35,17 @@ describe('fuzzy', function(){
         })).to.eql([{arg: 'hizzahpooslahp'}]);
     });
   });
+  describe('.templatize', function(){
+    it('should return the rendered string given pattern, string, and template', function(){
+      expect(fuzzy.templatize('ab', 'ZaZbZ', '<{{char}}>')).to.equal('Z<a>Z<b>Z');
+    });
+    it('should not require a template, returning the string as is', function(){
+      expect(fuzzy.templatize('ab', 'ZaZbZ')).to.equal('ZaZbZ');
+    });
+    it('should return null on no match', function(){
+      expect(fuzzy.templatize('ZEBRA!', 'ZaZbZ')).to.equal(null);
+    });
+  });
   describe('.filter', function(){
     it('should return the index and matching array elements', function(){
       expect(fuzzy.filter('a', ['a'])).to.eql([{string: 'a', index: 0, original: 'a'}]);
