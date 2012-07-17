@@ -15,5 +15,6 @@
   "eqnull": true,
   "laxcomma": true,
   "expr": true,
+  "strict": false,
   "predef": ["describe", "it", "chai"]
 }
