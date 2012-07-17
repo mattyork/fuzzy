@@ -30,7 +30,8 @@
   },
   "devDependencies": {
     "mocha": "*",
-    "chai" : "*"
+    "chai" : "*",
+    "underscore": "*"
   },
   "keywords": ["fuzzy", "search", "filter"]
 }

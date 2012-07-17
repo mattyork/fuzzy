@@ -1,6 +1,6 @@
 all: fuzzy.js
 
-fuzzy.js: lint
+fuzzy.js: lint test
 
 lint:
 	@jshint lib test
