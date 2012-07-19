@@ -42,6 +42,8 @@ Licensed under the MIT license.
 
 ## TODO
 
+- use a for loop instead of split('').forEach: http://jsperf.com/splitting-a-string-for-loop-vs-split-foreach
+- update comments in code
 - Get docco style documentation
 - Fix up directors example so it looks different. Add movies, make it fast
 - Get benchmarks up
