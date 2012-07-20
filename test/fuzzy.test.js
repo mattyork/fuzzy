@@ -9,6 +9,7 @@ describe('fuzzy', function(){
       expect(fuzzy.test('back', 'imaback')).to.be.True;
       expect(fuzzy.test('back', 'bakck')).to.be.True;
       expect(fuzzy.test('shig', 'osh kosh modkhigow')).to.be.True;
+      expect(fuzzy.test('', 'osh kosh modkhigow')).to.be.True;
     });
     it('should return false when no fuzzy match', function(){
       expect(fuzzy.test('back', 'abck')).to.be.False;
@@ -16,15 +17,9 @@ describe('fuzzy', function(){
     });
   });
   describe('.simpleFilter', function(){
-    it('should filter the elements of a stringing array', function(){
+    it('should filter the elements of a string array', function(){
       expect(fuzzy.simpleFilter('a', ['a'])).to.eql(['a']);
       expect(fuzzy.simpleFilter('ab', ['aba', 'c', 'cacb'])).to.eql(['aba', 'cacb']);
-    });
-    it('should use optional func to get string out of array entry', function() {
-        var arr = [{arg: 'hizzahpooslahp'}, {arg: 'arppg'}];
-        expect(fuzzy.simpleFilter('poop', arr, function(original) {
-          return original.arg;
-        })).to.eql([{arg: 'hizzahpooslahp'}]);
     });
   });
   describe('.match', function(){
