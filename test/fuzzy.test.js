@@ -43,6 +43,16 @@ describe('fuzzy', function(){
       //TODO: Dont know how I feel about this. Sublime weights characters that
       // appear toward the beginning of the string a bit higher
     });
+    it('should be case insensitive by default', function(){
+      expect(fuzzy.filter('a', ['A'])[0].string).to.equal('A');
+    });
+    it('should take an ignoreCase parameter', function(){
+      var opts = {caseSensitive: false};
+      opts.caseSensitive = true;
+      expect(fuzzy.match('Ab', 'aB', opts)).to.equal(null);
+      expect(fuzzy.match('AB', 'AB', opts)).to.not.equal(null);
+    });
+
   });
   describe('.filter', function(){
     it('should return the index and matching array elements', function(){
@@ -58,9 +68,6 @@ describe('fuzzy', function(){
       expect(result[1].string).to.equal('cacb');
       expect(result[1].index).to.equal(2);
       expect(result[1]).to.have.property('score');
-    });
-    it('should be case insensitive', function(){
-      expect(fuzzy.filter('a', ['A'])[0].string).to.equal('A');
     });
     it('should use optional template stringing to wrap each element', function(){
       var rendered = fuzzy.filter('a', ['a'], {
