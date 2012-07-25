@@ -3,3 +3,4 @@ coverage.html
 node_modules
 *.sublime-workspace
 *.sublime-project
+benchmark.js

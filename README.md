@@ -1,27 +1,58 @@
 # fuzzy
 
-Fuzzy search / fuzzy filter function for javascript a la Textmate or Sublime Text's fuzzy file search.
-
-It's usable now, but breaking changes are imminent.
+1k standalone fuzzy search / fuzzy filter for javascript a la Textmate and Sublime Text's command-T fuzzy file search.
 
 ## Getting Started
-Install the module with: `npm install fuzzy`
+Install with: `npm install fuzzy`
+
+Very basic usage:
+
+Padawan: Simply filter the array of strings.
+
+```javascript
+var list = ['baconing', 'narwhal', 'a mighty bear canoe'];
+var results = fuzzy.filter('bcn', list)
+var matches = results.map(function(el) { return el.string; });
+console.log(matches);
+// [ 'baconing', 'a mighty bear canoe' ]
+```
+
+Jedi: Wrap each matching character with given strings
 
 ```javascript
 var list = ['baconing', 'narwhal', 'a mighty bear canoe'];
 var options = { pre: '<', post: '>' };
-fuzzy.filter('bcn', list, template)
+var results = fuzzy.filter('bcn', list, options)
+console.log(results);
 // [
-//   {string: '<b>a<c>o<n>ing',          index: 0, original: 'baconing'},
-//   {string: 'a mighty <b>ear <c>a<n>oe', index: 2, original: 'a mighty bear canoe'}
+//   {string: '<b>a<c>o<n>ing'           , index: 0, score: 3, original: 'baconing'},
+//   {string: 'a mighty <b>ear <c>a<n>oe', index: 2, score: 3, original: 'a mighty bear canoe'}
 // ]
 ```
 
-## Documentation
-_(Coming soon... probably)_
+Jedi Master: sometimes the array you give is not an array of strings. You can
+pass in a function that creates the string to match against from each element
+in the given array
+
+```javascript
+var list = [
+    {rompalu: 'baconing', zibbity: 'simba'}
+  , {rompalu: 'narwhal' , zibbity: 'mufasa'}
+  , {rompalu: 'a mighty bear canoe', zibbity: 'saddam hussein'}
+];
+var options = {
+    pre: '<'
+  , post: '>'
+  , extract: function(el) { return el.rompalu; }
+};
+var results = fuzzy.filter('bcn', list, options);
+var matches = results.map(function(el) { return el.string; });
+console.log(matches);
+// [ '<b>a<c>o<n>ing', 'a mighty <b>ear <c>a<n>oe' ]
+```
 
 ## Examples
-Check the examples directory
+Check out the html files in the examples directory
 
 ## Contributing
 Fork the repo!
@@ -34,12 +65,13 @@ Fork the repo!
 Add unit tests for any new or changed functionality. Lint, test, and minify using make, then shoot me a pull request.
 
 ## Release History
-Super Alpha Beta Zeta Tau. More greek letters than you know = not ready for prime time. Don't use this.
+v0.1.0 - July 25, 2012
 
 ## License
 Copyright (c) 2012 Matt York
 Licensed under the MIT license.
 
+<<<<<<< HEAD
 ## TODO
 
 - use a for loop instead of split('').forEach: http://jsperf.com/splitting-a-string-for-loop-vs-split-foreach
@@ -50,3 +82,5 @@ Licensed under the MIT license.
 - Get benchmarks running in the browser
 - Compare performance using my own position function to the regex function
 - Optimize! Paging, maybe? Web Workers? Async w/callbacks?
+=======
+>>>>>>> Minor speed improvement, doc improvement
