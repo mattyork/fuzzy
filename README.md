@@ -70,17 +70,3 @@ v0.1.0 - July 25, 2012
 ## License
 Copyright (c) 2012 Matt York
 Licensed under the MIT license.
-
-<<<<<<< HEAD
-## TODO
-
-- use a for loop instead of split('').forEach: http://jsperf.com/splitting-a-string-for-loop-vs-split-foreach
-- update comments in code
-- Get docco style documentation
-- Fix up directors example so it looks different. Add movies, make it fast
-- Get benchmarks up
-- Get benchmarks running in the browser
-- Compare performance using my own position function to the regex function
-- Optimize! Paging, maybe? Web Workers? Async w/callbacks?
-=======
->>>>>>> Minor speed improvement, doc improvement
