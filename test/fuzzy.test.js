@@ -47,12 +47,17 @@ describe('fuzzy', function(){
       expect(fuzzy.filter('a', ['A'])[0].string).to.equal('A');
     });
     it('should take an ignoreCase parameter', function(){
-      var opts = {caseSensitive: false};
-      opts.caseSensitive = true;
+      var opts = {caseSensitive: true};
       expect(fuzzy.match('Ab', 'aB', opts)).to.equal(null);
+      opts.caseSensitive = false;
       expect(fuzzy.match('AB', 'AB', opts)).to.not.equal(null);
     });
-
+    // TODO: implement this test
+    // it('should get the best match from a string, not just the first match', function(){
+    //   var opts = {pre: '<', post: '>'};
+    //   var result = fuzzy.match('bass', 'bodacious bass', opts).rendered;
+    //   expect(result).to.equal('bodacious <b><a><s><s>');
+    // });
   });
   describe('.filter', function(){
     it('should return the index and matching array elements', function(){

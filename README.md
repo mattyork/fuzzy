@@ -97,3 +97,13 @@ v0.1.0 - July 25, 2012
 ## License
 Copyright (c) 2012 Matt York
 Licensed under the MIT license.
+
+## TODO
+
+1. Search improvement: behave a bit more like sublime text by getting
+   the BEST match in a given string, not just the first. For example,
+   searching for 'bass' in 'bodacious bass' should match against 'bass',
+   but it currently matches like so: '<b>od<a>ciou<s> ba<s>s'. There is
+   a test already written, just need to implement it. Naive O(n^2) worst
+   case: find every match in the string, then select the highest scoring
+   match. Should benchmark this against current implementation once implemented
