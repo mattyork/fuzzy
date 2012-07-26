@@ -1,13 +1,37 @@
 # fuzzy
 
-1k standalone fuzzy search / fuzzy filter for javascript a la Textmate and Sublime Text's command-T fuzzy file search.
+1k standalone fuzzy search / fuzzy filter a la Textmate and Sublime Text's command-T fuzzy file search. Node or browser.
 
-## Getting Started
-Install with: `npm install fuzzy`
+## Get it
 
-Very basic usage:
+Node:
 
-Padawan: Simply filter the array of strings.
+```bash
+$ npm install fuzzy
+$ node
+> var fuzzy = require('fuzzy');
+> console.log(fuzzy)
+{ test: [Function],
+  match: [Function],
+  filter: [Function] }
+```
+
+Browser:
+
+```html
+<script src="/path/to/fuzzy.js"></script>
+<script>
+  console.log(fuzzy);
+  // Object >
+  //   filter: function (pattern, arr, opts) {
+  //   match: function (pattern, string, opts) {
+  //   test: function (pattern, string) {
+</script>
+```
+
+## Use it
+
+Padawan: Simply filter an array of strings.
 
 ```javascript
 var list = ['baconing', 'narwhal', 'a mighty bear canoe'];
@@ -17,7 +41,7 @@ console.log(matches);
 // [ 'baconing', 'a mighty bear canoe' ]
 ```
 
-Jedi: Wrap each matching character with given strings
+Jedi: Wrap matching characters in each string
 
 ```javascript
 var list = ['baconing', 'narwhal', 'a mighty bear canoe'];
@@ -53,6 +77,9 @@ console.log(matches);
 
 ## Examples
 Check out the html files in the examples directory
+
+## Documentation
+Code is well documented and the unit tests cover all functionality
 
 ## Contributing
 Fork the repo!
