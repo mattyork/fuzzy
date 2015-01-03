@@ -95,7 +95,7 @@ Add unit tests for any new or changed functionality. Lint, test, and minify usin
 v0.1.0 - July 25, 2012
 
 ## License
-Copyright (c) 2012 Matt York
+Copyright (c) 2015 Matt York
 Licensed under the MIT license.
 
 ## TODO
@@ -107,3 +107,6 @@ Licensed under the MIT license.
    a test already written, just need to implement it. Naive O(n^2) worst
    case: find every match in the string, then select the highest scoring
    match. Should benchmark this against current implementation once implemented
+   Also, "reactive rice" would be "<r><e>active r<i><c>e"
+2. Async batch updates so the UI doesn't block for huge sets. Or maybe Web Workers?
+3. Performance performance performance!
