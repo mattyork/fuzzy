@@ -26,8 +26,9 @@
         // Each element in directors is an object, not a string. We can pass in a
         // function that is called on each element in the array to extract the
         // string to fuzzy search against. In this case, element.dir
-        , extract: function(element) {
-            return element.dir + '::' + element.movies;
+        , extract: function(entry) {
+            // return entry.dir + '::' + entry.movies;
+            return entry.dir;
           }
       }
 
@@ -35,13 +36,13 @@
       var filtered = fuzzy.filter(search, directors, options);
 
       // Map the results to the html we want generated
-      var results = filtered.slice(0,50).map(function(entry){
-        var items = entry.string.split('::');
+      var results = filtered.slice(0,50).map(function(result){
+        var items = result.string.split('::');
         return listItemTemplate({
-            freebase: entry.original.fb
-          , director: items[0]
-          , movies: items[1]
-          , score: entry.score
+            freebase: result.original.fb
+          , director: result.string
+          , movies: result.original.movies
+          , score: result.score
         });
       });
 

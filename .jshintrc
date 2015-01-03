@@ -16,5 +16,5 @@
   "laxcomma": true,
   "expr": true,
   "strict": false,
-  "predef": ["describe", "it", "chai"]
+  "predef": ["describe", "it", "xit"]
 }

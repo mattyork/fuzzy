@@ -35,13 +35,9 @@ describe('fuzzy', function(){
       expect(fuzzy.match('ZEBRA!', 'ZaZbZ')).to.equal(null);
     });
     it('should return a greater score for consecutive matches of pattern', function(){
-      var consecutiveScore = fuzzy.match('abcd', 'abcd').score;
+      var consecutiveScore = fuzzy.match('abcd', 'zabcd').score;
       var scatteredScore = fuzzy.match('abcd', 'azbcd').score;
       expect(consecutiveScore).to.be.above(scatteredScore);
-    });
-    it('should return the same score for matches in the middle as matches at beginning', function(){
-      //TODO: Dont know how I feel about this. Sublime weights characters that
-      // appear toward the beginning of the string a bit higher
     });
     it('should be case insensitive by default', function(){
       expect(fuzzy.filter('a', ['A'])[0].string).to.equal('A');
@@ -52,12 +48,21 @@ describe('fuzzy', function(){
       opts.caseSensitive = false;
       expect(fuzzy.match('AB', 'AB', opts)).to.not.equal(null);
     });
+    xit('should return the same score for matches in the middle as matches at beginning', function(){
+      // TODO: Dont know how I feel about this. Sublime weights characters that
+      // appear toward the beginning of the string a bit higher
+    });
     // TODO: implement this test
-    // it('should get the best match from a string, not just the first match', function(){
-    //   var opts = {pre: '<', post: '>'};
-    //   var result = fuzzy.match('bass', 'bodacious bass', opts).rendered;
-    //   expect(result).to.equal('bodacious <b><a><s><s>');
-    // });
+    xit('should prefer consecutive characters even if they come after the first match', function(){
+      var opts = {pre: '<', post: '>'};
+      var result = fuzzy.match('bass', 'bodacious bass', opts).rendered;
+      expect(result).to.equal('bodacious <b><a><s><s>');
+    });
+    xit('should prefer consecutive characters in a match even if we need to break up into a substring', function(){
+      var opts = {pre: '<', post: '>'};
+      var result = fuzzy.match('reic', 'reactive rice', opts).rendered;
+      expect(result).to.equal('<r><e>active r<i><c>e');
+    });
   });
   describe('.filter', function(){
     it('should return the index and matching array elements', function(){
