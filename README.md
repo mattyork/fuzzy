@@ -103,10 +103,12 @@ Licensed under the MIT license.
 1. Search improvement: behave a bit more like sublime text by getting
    the BEST match in a given string, not just the first. For example,
    searching for 'bass' in 'bodacious bass' should match against 'bass',
-   but it currently matches like so: '<b>od<a>ciou<s> ba<s>s'. There is
+   but it currently matches like so: `<b>od<a>ciou<s> ba<s>s`. There is
    a test already written, just need to implement it. Naive O(n^2) worst
    case: find every match in the string, then select the highest scoring
    match. Should benchmark this against current implementation once implemented
-   Also, "reactive rice" would be "<r><e>active r<i><c>e"
-2. Async batch updates so the UI doesn't block for huge sets. Or maybe Web Workers?
-3. Performance performance performance!
+   Also, "reactive rice" would be `<r><e>active r<i><c>e`
+2. Search feature: Work on multiple strings in a match. For example, be able
+   to match against 'stth' against an object { folder: 'stuff', file: 'thing' }
+3. Async batch updates so the UI doesn't block for huge sets. Or maybe Web Workers?
+4. Performance performance performance!
