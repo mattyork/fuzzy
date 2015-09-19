@@ -1,8 +1,9 @@
 <html>
 <head>
   <title>Wikipedia Fuzzy Search Example</title>
-  <link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css">
-  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
+
 
   <script src="../lib/fuzzy.js"></script>
 
@@ -43,12 +44,14 @@
       displaySearchResults();
 
       // Filter the characters on each change of the textbox
-      $('#search').on({
-          'keyup': displaySearchResults
-        , 'webkitspeechchange': displaySearchResults
-      });
+      $('#search').keyup(displaySearchResults);
     });
   </script>
+  <style>
+    b {
+        color: red;
+    }
+  </style>
 </head>
 <body>
   <div class="container">

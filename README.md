@@ -1,13 +1,17 @@
 # fuzzy
 
-1k standalone fuzzy search / fuzzy filter a la Textmate and Sublime Text's command-T fuzzy file search. Node or browser.
+1k standalone fuzzy search / fuzzy filter a la Sublime Text's command-p fuzzy file search. Works in both node and browser.
+
+[![Example](http://i.imgur.com/18qZ9kZ.png)](http://htmlpreview.github.io/?https://github.com/mattyork/fuzzy/blob/master/examples/disney.html)
+
+[Try it out!](http://htmlpreview.github.io/?https://github.com/mattyork/fuzzy/blob/master/examples/disney.html)
 
 ## Get it
 
 Node:
 
 ```bash
-$ npm install fuzzy
+$ npm install --save fuzzy
 $ node
 > var fuzzy = require('fuzzy');
 > console.log(fuzzy)
@@ -76,23 +80,32 @@ console.log(matches);
 ```
 
 ## Examples
-Check out the html files in the examples directory
+Check out the html files in the [examples](https://github.com/mattyork/fuzzy/tree/master/examples) directory.
+
+[Try it here.](http://htmlpreview.github.io/?https://github.com/mattyork/fuzzy/blob/master/examples/disney.html)
 
 ## Documentation
-Code is well documented and the unit tests cover all functionality
+[Code is well documented](https://github.com/mattyork/fuzzy/blob/master/lib/fuzzy.js) and the [unit tests](https://github.com/mattyork/fuzzy/blob/master/test/fuzzy.test.js) cover all functionality
 
 ## Contributing
 Fork the repo!
 
     git clone <your_fork>
     cd fuzzy
-    npm install -d
+    npm install
     make
 
 Add unit tests for any new or changed functionality. Lint, test, and minify using make, then shoot me a pull request.
 
 ## Release History
 v0.1.0 - July 25, 2012
+
+* Initial Release
+
+v0.1.1 - September 19, 2015
+
+* Fix broken links in package.json
+* Fix examples
 
 ## License
 Copyright (c) 2015 Matt York

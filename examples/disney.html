@@ -1,8 +1,8 @@
 <html>
 <head>
   <title>Disney Fuzzy Search Example</title>
-  <link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css">
-  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
 
   <script src="../lib/fuzzy.js"></script>
   <script type="text/javascript">
@@ -83,9 +83,14 @@
       listCharacters();
 
       // Filter the characters on each change of the textbox
-      $('#search').on('keydown', listCharacters);
+      $('#search').keyup(listCharacters);
     });
   </script>
+  <style>
+    b {
+      color: red;
+    }
+  </style>
 </head>
 <body>
   <h1>Search Disney Characters</h1>
