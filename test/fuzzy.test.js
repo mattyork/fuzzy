@@ -64,7 +64,6 @@ describe('fuzzy', function(){
       expect(result).to.equal('<r><e>active r<i><c>e');
     });
   });
-
   describe('.filter', function(){
     it('should return list untouched when the pattern is undefined', function() {
       arr = ['aba', 'c', 'cacb']
