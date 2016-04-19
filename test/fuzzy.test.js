@@ -66,18 +66,18 @@ describe('fuzzy', function(){
   });
   describe('.filter', function(){
     it('should return list untouched when the pattern is undefined', function() {
-      arr = ['aba', 'c', 'cacb']
+      var arr = ['aba', 'c', 'cacb'];
       var result = fuzzy.filter(undefined, arr);
-      expect(result).to.equal(arr)
-    })
+      expect(result).to.equal(arr);
+    });
     it('should return an empty array when the array is undefined', function() {
       var result = fuzzy.filter('pattern', undefined);
-      expect(result).to.deep.equal([])
-    })
+      expect(result).to.deep.equal([]);
+    });
     it('should return an empty array when the array is empty', function() {
       var result = fuzzy.filter('pattern', []);
-      expect(result).to.deep.equal([])
-    })
+      expect(result).to.deep.equal([]);
+    });
     it('should return the index and matching array elements', function(){
       var result = fuzzy.filter('ab', ['aba', 'c', 'cacb']);
       expect(result).to.have.length(2);
