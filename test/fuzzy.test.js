@@ -105,6 +105,24 @@ describe('fuzzy', function(){
       })[0].string;
       expect(rendered).to.eql('c<a>c<b>c');
     });
+    it('should optionally return an object surrounding each character', function(){
+      var fuzzyMatched = fuzzy.filter('a', ['a'], {
+        returnMatchInfo: true
+      })[0].string;
+      expect(fuzzyMatched).to.eql([{match: true, char: 'a'}]);
+
+      fuzzyMatched = fuzzy.filter('a', ['ab'], {
+        returnMatchInfo: true
+      })[0].string;
+      expect(fuzzyMatched).to.eql([{match: true, char: 'a'}, {match: false, char: 'b'}]);
+
+      fuzzyMatched = fuzzy.filter('a', ['ab'], {
+          returnMatchInfo: true
+        , pre: "tah"
+        , post: "zah!"
+      })[0].string;
+      expect(fuzzyMatched).to.eql([{match: true, char: 'tahazah!'}, {match: false, char: 'b'}]);
+    })
     it('should use optional func to get string out of array entry', function() {
       var arr = [{arg: 'hizzahpooslahp'}, {arg: 'arppg'}];
       expect(fuzzy.filter('poop', arr, {
