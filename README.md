@@ -79,6 +79,37 @@ console.log(matches);
 // [ '<b>a<c>o<n>ing', 'a mighty <b>ear <c>a<n>oe' ]
 ```
 
+Chewbacca: sometimes you don't want to get unsafely wrapped html structures,
+and you'd rather do it yourself later. Prepending and appending strings is
+cool until you use React and don't want XSS. You can tell fuzzy.js to return
+small 'match info' objects to suit your needs better.
+
+```javascript
+var list = ['rey', 'kylo ren', 'finn'];
+var options = { returnMatchInfo: true };
+var results = fuzzy.filter('ren', list, options);
+console.log(results);
+// [ { string:
+//      [ {match: true, char: 'r'},
+//        {match: true, char: 'e'},
+//        {match: false, char: 'y'} ],
+//     score: 4,
+//     index: 0,
+//     original: 'rey' },
+//   { string:
+//      [ {match: false, char: 'k'},
+//        {match: false, char: 'y'},
+//        {match: false, char: 'l'},
+//        {match: false, char: 'o'},
+//        {match: false, char: ' '},
+//        {match: true,  char: 'r'},
+//        {match: true,  char: 'e'},
+//        {match: false, char: 'n'} ],
+//     score: 4,
+//     index: 1,
+//     original: 'kylo ren' } ]
+```
+
 ## Examples
 Check out the html files in the [examples](https://github.com/mattyork/fuzzy/tree/master/examples) directory.
 
