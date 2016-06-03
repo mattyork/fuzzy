@@ -3,7 +3,7 @@
 
 root = true
 
-; All JavaScript files should use tabs unless specified otherwise
+; All files should use two spaces and Unix line endings unless specified otherwise
 
 [*]
 indent_style = space
