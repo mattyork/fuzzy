@@ -120,7 +120,7 @@ Licensed under the MIT license.
    a test already written, just need to implement it. Naive O(n^2) worst
    case: find every match in the string, then select the highest scoring
    match. Should benchmark this against current implementation once implemented
-   Also, "reactive rice" would be `<r><e>active r<i><c>e`
+   Also, "reactive rice" would be `<r><e>active r<i><c>e - [x] DONE`
 2. Search feature: Work on multiple strings in a match. For example, be able
    to match against 'stth' against an object { folder: 'stuff', file: 'thing' }
 3. Async batch updates so the UI doesn't block for huge sets. Or maybe Web Workers?
