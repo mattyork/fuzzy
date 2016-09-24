@@ -66,18 +66,18 @@ describe('fuzzy', function(){
   });
   describe('.filter', function(){
     it('should return list untouched when the pattern is undefined', function() {
-      arr = ['aba', 'c', 'cacb']
+      var arr = ['aba', 'c', 'cacb'];
       var result = fuzzy.filter(undefined, arr);
-      expect(result).to.equal(arr)
-    })
+      expect(result).to.equal(arr);
+    });
     it('should return an empty array when the array is undefined', function() {
       var result = fuzzy.filter('pattern', undefined);
-      expect(result).to.deep.equal([])
-    })
+      expect(result).to.deep.equal([]);
+    });
     it('should return an empty array when the array is empty', function() {
       var result = fuzzy.filter('pattern', []);
-      expect(result).to.deep.equal([])
-    })
+      expect(result).to.deep.equal([]);
+    });
     it('should return the index and matching array elements', function(){
       var result = fuzzy.filter('ab', ['aba', 'c', 'cacb']);
       expect(result).to.have.length(2);
@@ -119,6 +119,16 @@ describe('fuzzy', function(){
       var arr = 'abcdefghjklmnop'.split('');
       var results = _.pluck(fuzzy.filter('', arr), 'string');
       expect(results).to.eql(arr);
+    });
+    it('should return exact matches with pattern with highest score', function(){
+      // array needs to be over size 10: V8 has stable sort with < 10 elements,
+      // unstable with > 10 elements
+      var searchString = 'go';
+      var arr = 'abcdefghjklmnop'.split('');
+      arr = arr.map(function(item) { return item + 'oo'; });
+      arr = arr.concat(['good', 'go', 'goofgo', 'ogo']);
+      var results = _.pluck(fuzzy.filter(searchString, arr), 'string');
+      expect(results[0]).to.eql(searchString);
     });
   });
 });
