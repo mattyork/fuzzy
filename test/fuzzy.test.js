@@ -120,7 +120,7 @@ describe('fuzzy', function(){
       var results = _.pluck(fuzzy.filter('', arr), 'string');
       expect(results).to.eql(arr);
     });
-    it('should return exact matches with pattern with highest score', function(){
+    it('should weight exact matches the highest', function(){
       // array needs to be over size 10: V8 has stable sort with < 10 elements,
       // unstable with > 10 elements
       var searchString = 'go';
