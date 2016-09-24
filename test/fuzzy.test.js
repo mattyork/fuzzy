@@ -53,12 +53,12 @@ describe('fuzzy', function(){
       // appear toward the beginning of the string a bit higher
     });
     // TODO: implement this test
-    xit('should prefer consecutive characters even if they come after the first match', function(){
+    it('should prefer consecutive characters even if they come after the first match', function(){
       var opts = {pre: '<', post: '>'};
       var result = fuzzy.match('bass', 'bodacious bass', opts).rendered;
       expect(result).to.equal('bodacious <b><a><s><s>');
     });
-    xit('should prefer consecutive characters in a match even if we need to break up into a substring', function(){
+    it('should prefer consecutive characters in a match even if we need to break up into a substring', function(){
       var opts = {pre: '<', post: '>'};
       var result = fuzzy.match('reic', 'reactive rice', opts).rendered;
       expect(result).to.equal('<r><e>active r<i><c>e');
