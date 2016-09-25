@@ -107,6 +107,13 @@ v0.1.1 - September 19, 2015
 * Fix broken links in package.json
 * Fix examples
 
+v0.1.2 - September 25, 2016
+
+* Exact matches get the highest score. #15
+* Add TypeScript typings #21
+* Better error handling for invalid input #13
+* Smaller bower install footprint #22
+
 ## License
 Copyright (c) 2015 Matt York
 Licensed under the MIT license.
