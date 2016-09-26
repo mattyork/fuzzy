@@ -27,11 +27,15 @@
     "node": ">= 0.6.0"
   },
   "scripts": {
-    "test": "./node_modules/.bin/mocha"
+    "build": "./node_modules/.bin/tsc",
+    "clean": "./node_modules/.bin/rimraf lib",
+    "test": "./node_modules/.bin/mocha",
+    "minify": "./node_modules/.bin/uglifyjs lib/fuzzy.js >fuzzy-min.js"
   },
   "devDependencies": {
     "chai": "^3.5.0",
     "mocha": "^3.0.2",
+    "rimraf": "^2.5.4",
     "typescript": "^2.0.3",
     "uglify-js": "^2.7.3",
     "underscore": "^1.8.3"
