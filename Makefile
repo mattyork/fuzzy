@@ -2,10 +2,6 @@ all: fuzzy.js
 
 fuzzy.js: lint test build
 
-lint:
-	@./node_modules/.bin/jshint lib test examples \
-	&& echo "  ✔\033[32m passed jshint, yo! \033[0m"
-
 test:
 	@./node_modules/.bin/mocha
 
