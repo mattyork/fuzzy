@@ -1,10 +1,10 @@
-# fuzzy
+# fuzzy [![Build Status](https://img.shields.io/travis/mattyork/fuzzy/master.svg)](https://travis-ci.org/mattyork/fuzzy) [![npm version](https://badge.fury.io/js/fuzzy.svg)](https://badge.fury.io/js/fuzzy)
 
 1k standalone fuzzy search / fuzzy filter a la Sublime Text's command-p fuzzy file search. Works in both node and browser.
 
-[![Example](http://i.imgur.com/18qZ9kZ.png)](http://htmlpreview.github.io/?https://github.com/mattyork/fuzzy/blob/master/examples/disney.html)
+[![Example](http://i.imgur.com/obzCQq7.gif)](http://htmlpreview.github.io/?https://github.com/mattyork/fuzzy/blob/master/examples/disney.html)
 
-[Try it out!](http://htmlpreview.github.io/?https://github.com/mattyork/fuzzy/blob/master/examples/disney.html)
+Try it yourself: [Disney Character Search Example](http://htmlpreview.github.io/?https://github.com/mattyork/fuzzy/blob/master/examples/disney.html)
 
 ## Get it
 
@@ -82,8 +82,9 @@ console.log(matches);
 ## Examples
 Check out the html files in the [examples](https://github.com/mattyork/fuzzy/tree/master/examples) directory.
 
-[Try it here.](http://htmlpreview.github.io/?https://github.com/mattyork/fuzzy/blob/master/examples/disney.html)
-
+Try the examples live: 
+- [disney](http://htmlpreview.github.io/?https://github.com/mattyork/fuzzy/blob/master/examples/disney.html)
+- [wikipedia](http://htmlpreview.github.io/?https://github.com/mattyork/fuzzy/blob/master/examples/wikipedia.html)
 ## Documentation
 [Code is well documented](https://github.com/mattyork/fuzzy/blob/master/lib/fuzzy.js) and the [unit tests](https://github.com/mattyork/fuzzy/blob/master/test/fuzzy.test.js) cover all functionality
 
