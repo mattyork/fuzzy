@@ -1,7 +1,7 @@
 {
   "name": "fuzzy",
   "description": "small, standalone fuzzy search / fuzzy filter. browser or node",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "homepage": "https://github.com/mattyork/fuzzy",
   "author": {
     "name": "Matt York",

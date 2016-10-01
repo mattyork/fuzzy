@@ -115,6 +115,10 @@ v0.1.2 - September 25, 2016
 * Better error handling for invalid input #13
 * Smaller bower install footprint #22
 
+v0.1.3 - October 1, 2016
+
+* Fix blocking bug in React Native #27
+
 ## License
 Copyright (c) 2015 Matt York
 Licensed under the MIT license.
