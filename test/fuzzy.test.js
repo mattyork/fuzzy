@@ -48,6 +48,9 @@ describe('fuzzy', function(){
       opts.caseSensitive = false;
       expect(fuzzy.match('AB', 'AB', opts)).to.not.equal(null);
     });
+    it('should return indices of matching characters', function (){
+      expect(fuzzy.match('bd','abcde').indices).to.deep.equal([1,3]);
+    })
     xit('should return the same score for matches in the middle as matches at beginning', function(){
       // TODO: Dont know how I feel about this. Sublime weights characters that
       // appear toward the beginning of the string a bit higher
