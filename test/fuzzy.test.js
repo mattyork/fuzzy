@@ -48,6 +48,9 @@ describe('fuzzy', function(){
       opts.caseSensitive = false;
       expect(fuzzy.match('AB', 'AB', opts)).to.not.equal(null);
     });
+    it('should return indices of matching characters', function (){
+      expect(fuzzy.match('bd','abcde').indices).to.deep.equal([1,3]);
+    })
     xit('should return the same score for matches in the middle as matches at beginning', function(){
       // TODO: Dont know how I feel about this. Sublime weights characters that
       // appear toward the beginning of the string a bit higher
@@ -86,11 +89,13 @@ describe('fuzzy', function(){
       expect(result[0].string).to.equal('aba');
       expect(result[0].index).to.equal(0);
       expect(result[0]).to.have.property('score');
+      expect(result[0].indices).to.deep.equal([0,1]);
 
       // verify second result
       expect(result[1].string).to.equal('cacb');
       expect(result[1].index).to.equal(2);
       expect(result[1]).to.have.property('score');
+      expect(result[1].indices).to.deep.equal([1,3]);
     });
     it('should use optional template stringing to wrap each element', function(){
       var rendered = fuzzy.filter('a', ['a'], {
