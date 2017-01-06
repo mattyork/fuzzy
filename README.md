@@ -35,7 +35,7 @@ Browser:
 
 ## Use it
 
-Padawan: Simply filter an array of strings.
+Initiate: Simply filter an array of strings.
 
 ```javascript
 var list = ['baconing', 'narwhal', 'a mighty bear canoe'];
@@ -43,6 +43,23 @@ var results = fuzzy.filter('bcn', list)
 var matches = results.map(function(el) { return el.string; });
 console.log(matches);
 // [ 'baconing', 'a mighty bear canoe' ]
+```
+
+Padawan: Match case-sensitive strings (defaults to `false`)
+
+```javascript
+var list = ['baconing', 'narwhal', 'a Mighty Bear canoe'];
+var options = { caseSensitive: true };
+var results_lower = fuzzy.filter('bcn', list, options)
+console.log(results_lower);
+// [
+//   {string: '<b>a<c>o<n>ing'           , index: 0, score: 3, original: 'baconing'},
+// ]
+var results_upper = fuzzy.filter('Bcn', list, options)
+console.log(results_upper);
+// [
+//   {string: 'a mighty <B>ear <c>a<n>oe', index: 2, score: 3, original: 'a Mighty Bear canoe'}
+// ]
 ```
 
 Jedi: Wrap matching characters in each string
