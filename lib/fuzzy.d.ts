@@ -33,7 +33,7 @@ export declare function match(
   pattern: string,
   inputString: string,
   opts?: MatchOptions
-): MatchResult;
+): MatchResult | null;
 
 export interface FilterOptions<T> {
   pre?: string;
